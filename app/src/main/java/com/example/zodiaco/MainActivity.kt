@@ -12,9 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
 
-    val horoscopeList = listOf(
-        Horoscope("aries", R.drawable.aries_svgrepo_com, R.string.horoscope_name_aries, R.string.horoscope_dates_aries)
-        )
+    val horoscopeList = Horoscope.horoscopeList
 
         lateinit var recyclerView: RecyclerView
 

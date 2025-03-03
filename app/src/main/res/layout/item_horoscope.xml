@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:padding="@android:dimen/system_app_widget_inner_radius">
 
 
         <ImageView
             android:id="@+id/iconImageView"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@drawable/aries_svgrepo_com"
             android:layout_marginEnd="16dp"/>
 
@@ -28,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nombre"
-                android:textSize="24sp"
+                android:textSize="30sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -36,12 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Date"
-                android:textSize="18sp"/>
+                android:textSize="22sp"/>
 
         </LinearLayout>
     </LinearLayout>
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
