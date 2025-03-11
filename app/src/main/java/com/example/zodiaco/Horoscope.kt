@@ -4,7 +4,8 @@ class Horoscope (
     val id: String,
     val name: Int,
     val dates: Int,
-    val icon: Int
+    val icon: Int,
+    //val description: Int
 ) {
 companion object {
     val horoscopeList = listOf(

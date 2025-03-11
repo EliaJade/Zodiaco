@@ -31,4 +31,9 @@
     <string name="horoscope_dates_aquarius">from January 20 to February 18</string>
     <string name="horoscope_dates_pisces">from February 19 to March 20</string>
 
+
+    <string name="action_favorite">Favorite</string>
+    <string name="action_unfavorite">Unfavorite</string>
+    <string name="action_search">Search</string>
+
 </resources>

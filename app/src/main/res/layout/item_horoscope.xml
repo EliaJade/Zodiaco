@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@android:dimen/system_app_widget_inner_radius">
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/iconImageView"
@@ -12,6 +16,17 @@
             android:layout_height="80dp"
             android:src="@drawable/aries_svgrepo_com"
             android:layout_marginEnd="16dp"/>
+
+
+        <ImageView
+            android:id="@+id/favoriteIcon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/favourite"
+            app:tint="@color/Favorite"
+            android:layout_gravity="end|bottom"/>
+
+    </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,6 +47,14 @@
                 android:layout_height="wrap_content"
                 android:text="Date"
                 android:textSize="22sp"/>
+
+            <TextView
+                android:id="@+id/descTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Horoscope Description"
+                android:textSize="20dp"/>
+
 
         </LinearLayout>
     </LinearLayout>
