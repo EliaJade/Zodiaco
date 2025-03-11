@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -25,18 +27,27 @@ class DetailActivity : AppCompatActivity() {
         const val EXTRA_HOROSCOPE_ID = "HOROSCOPE_ID"
     }
 
+    private var currentHoroscopeIndex:Int = -1
+
     lateinit var nameTextView: TextView
     lateinit var datesTextView: TextView
     lateinit var iconImageView: ImageView
+    lateinit var horoscopeLuckTextView: TextView
 
     lateinit var horoscope: Horoscope
+
+    lateinit var progress : ProgressBar
+    lateinit var prevButton: Button
+    lateinit var nextButton: Button
 
     var isFavorite = false
     lateinit var favoriteMenu: MenuItem
 
     lateinit var session: SessionManager
 
-    lateinit var bottomNavigation
+
+
+    //lateinit var bottomNavigation
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -92,12 +103,15 @@ class DetailActivity : AppCompatActivity() {
                 if (isFavorite) {
                     session.setFavorite(horoscope.id)
 
+                } else {
+                session.setFavorite("")
                 }
-                session.setFavorite()
                 setFavoriteIcon()
                 //println("Menu favorite")
                 true
+
             }
+
             R.id.action_share -> {
                 val sendIntent = Intent()
                 sendIntent.setAction(Intent.ACTION_SEND)
@@ -123,6 +137,19 @@ class DetailActivity : AppCompatActivity() {
         nameTextView = findViewById(R.id.nameTextView)
         datesTextView = findViewById(R.id.datesTextView)
         iconImageView = findViewById(R.id.iconImageView)
+        horoscopeLuckTextView = findViewById((R.id.horoscopeLuckTextView)
+
+        progress = findViewById(R.id.progress)
+        prevButton = findViewById(R.id.menu_prev)
+        nextButton = findViewById(R.id.menu_next)
+
+        prevButton.setOnClickListener {
+            if(currentHoroscopeIndex == 0) {
+                currentHoroscopeIndex = HoroscopeProvider().getHoroscopes().size
+            }
+        currentHoroscopeIndex--
+        loadData()
+        }
 
         session = session.isFavorite(horoscope.id)
 
