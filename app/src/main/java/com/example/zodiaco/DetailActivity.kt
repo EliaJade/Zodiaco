@@ -38,6 +38,10 @@ class DetailActivity : AppCompatActivity() {
     lateinit var horoscopeLuckTextView: TextView
     lateinit var progressIndicator: LinearProgressIndicator
     lateinit var navigationBar: BottomNavigationView
+    lateinit var menu_prev: Button
+    lateinit var menu_next: Button
+
+    var currentHoroscopeIndex: Int = 1
 
     lateinit var horoscope: Horoscope
 
@@ -171,7 +175,27 @@ class DetailActivity : AppCompatActivity() {
         horoscopeLuckTextView = findViewById(R.id.horoscopeLuckTextView)
         navigationBar = findViewById(R.id.navigationBar)
         progressIndicator = findViewById(R.id.progress)
+        menu_prev = findViewById(R.id.menu_prev)
+        menu_next = findViewById(R.id.menu_next)
 
+
+    menu_prev.setOnClickListener {
+        currentHoroscopeIndex --
+        if (currentHoroscopeIndex == 0 {
+            currentHoroscopeIndex = HoroscopeProvider().getHoroscope().size
+
+        }
+
+        loadData()
+    }
+
+    menu_next.setOnClickListener {
+        currentHoroscopeIndex ++
+        if (currentHoroscopeIndex == HoroscopeProvider().getHoroscope().size) {
+            currentHoroscopeIndex = 0
+        }
+        loadData()
+    }
     }
 
     private fun setFavoriteIcon() {
