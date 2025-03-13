@@ -23,6 +23,10 @@ companion object {
         Horoscope("pisces", R.string.horoscope_name_pisces, R.string.horoscope_dates_pisces, R.drawable.pisces_svgrepo_com),
     )
 
+    fun findAll(): List<Horoscope> {
+        return horoscopeList
+    }
+
     fun findById(id:String): Horoscope {
         return horoscopeList.first { it.id == id }
     }

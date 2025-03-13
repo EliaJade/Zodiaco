@@ -31,6 +31,12 @@
         android:textSize="26dp"
         android:textAlignment="center"/>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/menu_activity_detail_navigation"/>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -50,10 +56,11 @@
 
         </ScrollView>
 
-            <ProgressBar
+            <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/progress"
-                android:layout_width="64dp"
-                android:layout_height="64dp"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"/>
 
     </FrameLayout>
 
