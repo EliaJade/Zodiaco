@@ -52,6 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
+                android:textAlignment="center"
                 android:padding="16dp"/>
 
         </ScrollView>
@@ -73,6 +74,8 @@
             android:id="@+id/menu_prev"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:drawableTint="@color/white"
+            android:backgroundTint="@color/buttons"
             android:layout_weight="1"
             android:text="Previous"
             android:drawableLeft="@drawable/ic_prev"
@@ -87,10 +90,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_next"
+            android:drawableRight="@drawable/ic_next"
+            android:backgroundTint="@color/buttons"
+            android:drawableTint="@color/white"
             android:text="Next"
-            android:textSize="18sp"
-            android:textColor="@color/background"/>
+            android:textSize="18sp" />
 
     </LinearLayout>
 

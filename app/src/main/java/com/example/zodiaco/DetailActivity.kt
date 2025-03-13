@@ -136,7 +136,6 @@ class DetailActivity : AppCompatActivity() {
                 } else {
                     session.setFavorite("")
                 }
-                isFavorite = !isFavorite
                 setFavoriteIcon()
                 //println("Menu favorite")
                 true
