@@ -35,13 +35,14 @@
         android:id="@+id/navigationBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/menu_activity_detail_navigation"/>
+        app:menu="@menu/menu_activity_detail_navigation"
+        android:background="@color/background"/>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/background">
+        >
 
         <ScrollView
             android:layout_width="match_parent"
@@ -51,9 +52,14 @@
                 android:id="@+id/horoscopeLuckTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 android:textAlignment="center"
-                android:padding="16dp"/>
+                android:justificationMode="inter_word"
+                android:paddingBottom="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:lineHeight="30sp"/>
 
         </ScrollView>
 
@@ -68,7 +74,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="@color/background">
 
         <Button
             android:id="@+id/menu_prev"

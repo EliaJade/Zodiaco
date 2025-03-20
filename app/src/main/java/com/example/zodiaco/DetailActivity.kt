@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowInsetsCompat
@@ -38,15 +39,15 @@ class DetailActivity : AppCompatActivity() {
     lateinit var horoscopeLuckTextView: TextView
     lateinit var progressIndicator: LinearProgressIndicator
     lateinit var navigationBar: BottomNavigationView
-    lateinit var menu_prev: Button
-    lateinit var menu_next: Button
+    lateinit var prevButton: Button
+    lateinit var nextButton: Button
 
-    var currentHoroscopeIndex: Int = 1
+    var currentHoroscopeIndex: Int = -1
 
     lateinit var horoscope: Horoscope
 
     var isFavorite = false
-    lateinit var favoriteMenu: MenuItem
+    var favoriteMenu: MenuItem? = null
 
     lateinit var session: SessionManager
 
@@ -71,7 +72,7 @@ class DetailActivity : AppCompatActivity() {
         val id: String = intent.getStringExtra(EXTRA_HOROSCOPE_ID)!!
 
         horoscope = Horoscope.findById(id)
-
+        currentHoroscopeIndex = Horoscope.horoscopeList.indexOf(horoscope)
 
 
 
@@ -80,8 +81,41 @@ class DetailActivity : AppCompatActivity() {
 
         loadData()
     }
+    private fun initView() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        nameTextView = findViewById(R.id.nameTextView)
+        datesTextView = findViewById(R.id.datesTextView)
+        iconImageView = findViewById(R.id.iconImageView)
+        horoscopeLuckTextView = findViewById(R.id.horoscopeLuckTextView)
+        navigationBar = findViewById(R.id.navigationBar)
+        progressIndicator = findViewById(R.id.progress)
+        prevButton = findViewById(R.id.menu_prev)
+        nextButton = findViewById(R.id.menu_next)
+
+
+        prevButton.setOnClickListener {
+
+            if (currentHoroscopeIndex == 0) {
+                currentHoroscopeIndex = HoroscopeProvider().getHoroscope().size
+            }
+            currentHoroscopeIndex --
+            loadData()
+
+        }
+
+        nextButton.setOnClickListener {
+            currentHoroscopeIndex ++
+            if (currentHoroscopeIndex == HoroscopeProvider().getHoroscope().size) {
+                currentHoroscopeIndex = 0
+            }
+            loadData()
+        }
+
+    }
 
     private fun loadData() {
+        horoscope = Horoscope.horoscopeList[currentHoroscopeIndex]
+
         supportActionBar?.setTitle(horoscope.name)
         supportActionBar?.setSubtitle(horoscope.dates)
 
@@ -92,6 +126,7 @@ class DetailActivity : AppCompatActivity() {
 
 
         isFavorite = session.isFavorite(horoscope.id)
+        setFavoriteIcon()
 
         navigationBar.setOnItemSelectedListener {
             when (it.itemId) {
@@ -167,43 +202,14 @@ class DetailActivity : AppCompatActivity() {
 
     }
 
-    private fun initView() {
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        nameTextView = findViewById(R.id.nameTextView)
-        datesTextView = findViewById(R.id.datesTextView)
-        iconImageView = findViewById(R.id.iconImageView)
-        horoscopeLuckTextView = findViewById(R.id.horoscopeLuckTextView)
-        navigationBar = findViewById(R.id.navigationBar)
-        progressIndicator = findViewById(R.id.progress)
-        menu_prev = findViewById(R.id.menu_prev)
-        menu_next = findViewById(R.id.menu_next)
 
-
-    menu_prev.setOnClickListener {
-        currentHoroscopeIndex --
-        if (currentHoroscopeIndex == 0 {
-            currentHoroscopeIndex = HoroscopeProvider().getHoroscope().size
-
-        }
-
-        loadData()
-    }
-
-    menu_next.setOnClickListener {
-        currentHoroscopeIndex ++
-        if (currentHoroscopeIndex == HoroscopeProvider().getHoroscope().size) {
-            currentHoroscopeIndex = 0
-        }
-        loadData()
-    }
-    }
 
     private fun setFavoriteIcon() {
         if (isFavorite) {
-            favoriteMenu.setIcon(R.drawable.favourite)
+            favoriteMenu?.setIcon(R.drawable.favourite)
 
         } else {
-            favoriteMenu.setIcon(R.drawable.favorite_unselected)
+            favoriteMenu?.setIcon(R.drawable.favorite_unselected)
         }
     }
 
@@ -241,6 +247,8 @@ class DetailActivity : AppCompatActivity() {
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
+            } finally {
+                urlConnection?.disconnect()
             }
         }
     }

@@ -3,6 +3,7 @@
     <style name="Base.Theme.Zodiaco" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">#00BCD4</item>
     </style>
 
     <style name="Theme.Zodiaco" parent="Base.Theme.Zodiaco" />

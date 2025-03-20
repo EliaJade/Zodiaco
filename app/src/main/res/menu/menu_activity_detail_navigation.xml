@@ -4,16 +4,19 @@
     <item
         android:id="@+id/action_daily"
         android:icon="@android:drawable/ic_menu_today"
+        android:drawableTint="@color/buttons"
         app:showAsAction="always"
-        android:title="Daily"/>
+        android:title="Daily" />
     <item
         android:id="@+id/action_weekly"
         android:icon="@android:drawable/ic_menu_week"
+        android:drawableTint="@color/buttons"
         app:showAsAction="always"
         android:title="Weekly"/>
     <item
         android:id="@+id/action_monthly"
         android:icon="@android:drawable/ic_menu_month"
+        android:drawableTint="@color/buttons"
         app:showAsAction="always"
         android:title="Monthly"/>
 
