@@ -36,7 +36,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:menu="@menu/menu_activity_detail_navigation"
-        android:background="@color/background"/>
+        android:background="@color/background"
+        app:itemIconTint="@color/buttons"/>
 
     <FrameLayout
         android:layout_width="match_parent"
